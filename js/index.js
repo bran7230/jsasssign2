@@ -5,8 +5,7 @@
 //Basic declaritions of ids, and outputs
 let smoothieForm = document.getElementById("smoothieForm");
 let output = document.getElementById("output");
-
-
+let specialInstructions = document.getElementById("specialInstructions");
 /*
  * Smoothie Class
  * Represents a smoothie with a quantity and fruit type with size, liquid, and sweetner.
@@ -52,10 +51,13 @@ smoothieForm.addEventListener("submit", function(event) {
     let size = document.getElementById("size").value;
     let liquid = document.getElementById("liquid").value;
     let sweetener = document.getElementById("sweetener").value;
-
+    let notes = document.getElementById("notes").value;
     try{
         let smoothie = new Smoothie(quantity, fruit, size, liquid, sweetener);
-        output.textContent = smoothie.getSmoothieDetails();
+        output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!"; 
+        specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
+     
+
     }
     catch(error) {
         output.textContent = error.message;
