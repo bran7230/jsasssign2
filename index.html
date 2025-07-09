@@ -21,6 +21,35 @@
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
 
+        <label for="size">Size:</label>
+        <select id="size" name="size">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+        </select>
+
+        <label for="liquid">Liquid Base:</label>
+        <select id="liquid" name="liquid">
+            <option value="water">Water</option>
+            <option value="milk">Milk</option>
+            <option value="juice">Juice</option>
+            <option value="yogurt">Yogurt</option>
+        </select>
+
+        <label for="sweetener">Sweetener:</label>
+        <select id="sweetener" name="sweetener">
+            <option value="honey">Honey</option>
+            <option value="sugar">Sugar</option>
+            <option value="agave">Agave</option>
+            <option value="none">None</option>
+        </select>
+
+        
+      
+
+        <label for="notes">Special Instructions:</label>
+        <textarea id="notes" name="notes" rows="4" cols="50" placeholder="Any special requests or instructions..."></textarea>
+
         <button type="submit" onclick="return confirm('Order smoothie?')">Submit</button> <!--A little extra I know you havent taught this yet-->
     </form>
 	<p id="output" class="recept"></p>

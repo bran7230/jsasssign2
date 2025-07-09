@@ -20,7 +20,9 @@
 }
 
 .smoothieForm select,
-.smoothieForm input[type="number"] {
+.smoothieForm input[type="number"], 
+.smoothieForm input[type="checkbox"] 
+{
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -42,3 +44,5 @@
 .smoothieForm button:hover {
     background-color: #218838;
 }
+
+
