@@ -1,5 +1,16 @@
+//
+//  This code creates a simple smoothie ordering form using JavaScript. It includes a class to handle smoothie details and error checking for the quantity input.
+//
+
+//Basic declaritions of ids, and outputs
 let smoothieForm = document.getElementById("smoothieForm");
 let output = document.getElementById("output");
+
+/*
+ * Smoothie Class
+ * Represents a smoothie with a quantity and fruit type.
+ * Validates the quantity to be between 1 and 10.
+ */
 class Smoothie{
 
     quantity;
@@ -19,6 +30,10 @@ class Smoothie{
     }
 
 }
+/* Event listener for the smoothie form submission.
+ * Prevents default form submission, retrieves input values,
+ * creates a Smoothie instance, and displays the details or error message.
+ */
 smoothieForm.addEventListener("submit", function(event) {
     event.preventDefault(); 
 
