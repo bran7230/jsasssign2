@@ -11,7 +11,7 @@ let specialInstructions = document.getElementById("specialInstructions");
  * Represents a smoothie with a quantity and fruit type with size, liquid, and sweetner.
  * Validates the quantity to be between 1 and 10.
  */
-class Smoothie{
+class Smoothie {
 
     quantity;
     fruit;
@@ -20,10 +20,10 @@ class Smoothie{
     sweetener;
 
     constructor(quantity, fruit, size, liquid, sweetener) {
-        if(quantity < 1 || quantity > 10) {
+        if (quantity < 1 || quantity > 10) {
             throw new Error("Quantity must be between 1 and 10");
         }
-       
+
         this.quantity = quantity;
         this.fruit = fruit;
         this.size = size;
@@ -31,25 +31,21 @@ class Smoothie{
         this.sweetener = sweetener;
     }
 
-    getSmoothieDetails(){
-        if(this.sweetener == "none"){
-            return `A ${this.size} ${this.liquid} Smoothie with ${this.quantity} servings of ${this.fruit}.`;
-        }
-        //Small fix for singular and plural
-        //If quantity is 1, use "serving" otherwise use "servings"
-        if(this.quantity == 1){
-            return `A ${this.size} ${this.liquid} Smoothie with ${this.quantity} serving of ${this.fruit} and ${this.sweetener} sweetener.`;
-        }
-        return `A ${this.size} ${this.liquid} Smoothie with ${this.quantity} servings of ${this.fruit} and ${this.sweetener} sweetener.`;
+    getSmoothieDetails() {
+        const servingText = this.quantity === 1 ? "serving of" : "servings of";
+        // Only include sweetener if it's not empty or "None"
+        const sweetenerText = this.sweetener && this.sweetener.toLowerCase() !== "none" ? ` and ${this.sweetener} sweetener` : "";
+        return ` A ${this.size} ${this.liquid} smoothie with ${this.quantity} ${servingText} ${this.fruit} ${sweetenerText}.`;
     }
 
 }
+
 /* Event listener for the smoothie form submission.
  * Prevents default form submission, retrieves input values,
  * creates a Smoothie instance, and displays the details or error message.
  */
-smoothieForm.addEventListener("submit", function(event) {
-    event.preventDefault(); 
+smoothieForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
     let quantity = parseInt(document.getElementById("quantity").value);
     let fruit = document.getElementById("fruit").value;
@@ -57,14 +53,25 @@ smoothieForm.addEventListener("submit", function(event) {
     let liquid = document.getElementById("liquid").value;
     let sweetener = document.getElementById("sweetener").value;
     let notes = document.getElementById("notes").value;
-    try{
-        let smoothie = new Smoothie(quantity, fruit, size, liquid, sweetener);
-        output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!"; 
-        specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
-     
 
+    try {
+        let smoothie = new Smoothie(quantity, fruit, size, liquid, sweetener);
+        output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
+        specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
     }
-    catch(error) {
+    catch (error) {
         output.textContent = error.message;
     }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("presetSmoothie").addEventListener("click", function () {
+        document.getElementById("fruit").value = "Strawberry";
+        document.getElementById("quantity").value = 2;
+        document.getElementById("size").value = "Large";
+        document.getElementById("liquid").value = "Yogurt";
+        document.getElementById("sweetener").value = "Honey";
+        document.getElementById("notes").value = "No ice, please!";
+    });
 });
