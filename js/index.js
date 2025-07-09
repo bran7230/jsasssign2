@@ -35,6 +35,11 @@ class Smoothie{
         if(this.sweetener == "none"){
             return `A ${this.size} ${this.liquid} Smoothie with ${this.quantity} servings of ${this.fruit}.`;
         }
+        //Small fix for singular and plural
+        //If quantity is 1, use "serving" otherwise use "servings"
+        if(this.quantity == 1){
+            return `A ${this.size} ${this.liquid} Smoothie with ${this.quantity} serving of ${this.fruit} and ${this.sweetener} sweetener.`;
+        }
         return `A ${this.size} ${this.liquid} Smoothie with ${this.quantity} servings of ${this.fruit} and ${this.sweetener} sweetener.`;
     }
 
