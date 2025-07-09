@@ -9,7 +9,7 @@ let output = document.getElementById("output");
 
 /*
  * Smoothie Class
- * Represents a smoothie with a quantity and fruit type.
+ * Represents a smoothie with a quantity and fruit type with size, liquid, and sweetner.
  * Validates the quantity to be between 1 and 10.
  */
 class Smoothie{
