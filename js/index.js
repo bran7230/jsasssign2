@@ -66,40 +66,38 @@ smoothieForm.addEventListener("submit", function (event) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    /* Function to set form values for preset smoothies.
+     * This function sets the values of the smoothie form fields based on the provided parameters.
+     * IE You pass in 2 for the quantity, "Strawberry" for the fruit, etc.
+     * It updates the form fields with the specified values when you call it.
+    */
+    function setFormValue(quantity, fruit, size, liquid, sweetener, notes) {
+        new Smoothie(quantity, fruit, size, liquid, sweetener); //Checking data validity(Beauty of OOP)
+        // Set the form values based on the parameters passed to the function
+        document.getElementById("quantity").value = quantity;
+        document.getElementById("fruit").value = fruit;
+        document.getElementById("size").value = size;
+        document.getElementById("liquid").value = liquid;
+        document.getElementById("sweetener").value = sweetener;
+        document.getElementById("notes").value = notes;
+    }
+
+    //Add event listeners to preset buttons to set form values for different smoothies.
+    //It goes Quanity, Fruit, Size, Liquid, Sweetener, Notes and all of this is passed to the setFormValue function which updates the dom.
     document.getElementById("presetSmoothie1").addEventListener("click", function () {
-        document.getElementById("fruit").value = "Strawberry";
-        document.getElementById("quantity").value = 2;
-        document.getElementById("size").value = "Large";
-        document.getElementById("liquid").value = "Yogurt";
-        document.getElementById("sweetener").value = "Honey";
-        document.getElementById("notes").value = "No ice, please!";
+        setFormValue(2, "Strawberry", "Large", "Yogurt", "Honey", "No ice, please!");
     });
 
     document.getElementById("presetSmoothie2").addEventListener("click", function () {
-        document.getElementById("fruit").value = "Banana";
-        document.getElementById("quantity").value = 1;
-        document.getElementById("size").value = "Medium";
-        document.getElementById("liquid").value = "Milk";
-        document.getElementById("sweetener").value = "None";
-        document.getElementById("notes").value = "Add extra protein powder.";
+        setFormValue(1, "Banana", "Medium", "Milk", "None", "Add extra protein powder.");
     });
 
     document.getElementById("presetSmoothie3").addEventListener("click", function () {
-        document.getElementById("fruit").value = "Apple";
-        document.getElementById("quantity").value = 3;
-        document.getElementById("size").value = "Small";
-        document.getElementById("liquid").value = "Juice";
-        document.getElementById("sweetener").value = "Agave";
-        document.getElementById("notes").value = "Make it extra cold!";
+        setFormValue(3, "Apple", "Small", "Juice", "Agave", "Make it extra cold!");
     });
 
     document.getElementById("presetSmoothie4").addEventListener("click", function () {
-        document.getElementById("fruit").value = "Orange";
-        document.getElementById("quantity").value = 6;
-        document.getElementById("size").value = "Large";
-        document.getElementById("liquid").value = "Water";
-        document.getElementById("sweetener").value = "None";
-        document.getElementById("notes").value = "No sweetener, please.";
+        setFormValue(6, "Orange", "Large", "Water", "None", "No sweetener, please.");
     });
 
 });
