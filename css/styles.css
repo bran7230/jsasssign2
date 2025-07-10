@@ -1,6 +1,9 @@
 *{
     font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
 }
+
 header{
     padding: 10px 0;
     text-align: center;
