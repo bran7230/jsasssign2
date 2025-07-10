@@ -27,7 +27,8 @@ class Smoothie {
         if (quantity < 1 || quantity > 10 || isNaN(quantity)) {
             throw new Error("Quantity must be a number between 1 and 10");
         }
-        // Check if fruit, size, liquid, and sweetener are provided and not empty(Ps: I know I dont need these validations but I added them for extra safety if you wanted to use this code in a real world application)
+        // Check if fruit, size, liquid, and sweetener are provided and not empty
+        // (Ps: I know I dont need these validations but I added them for extra safety if you wanted to use this code in a real world application)
         if (!fruit || fruit.trim() === "") {
             throw new Error("Please select a fruit.");
         }
@@ -53,6 +54,10 @@ class Smoothie {
     }
 
     getSmoothieDetails() {
+        /* Ternary operator to determine the serving text based on quantity
+         * If quantity is 1, it will return "serving of", otherwise it will return "servings of"
+         * This is used to make the output more readable and grammatically correct.
+         */ 
         const servingText = this.quantity === 1 ? "serving of" : "servings of";
         // Only include sweetener if it's not empty or "None"
         const sweetenerText = this.sweetener && this.sweetener.toLowerCase() !== "none" ? ` and ${this.sweetener} sweetener` : "";
@@ -78,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sweetenerSelect = document.getElementById("sweetener");
     const notesInput = document.getElementById("notes");
 
-    /* * Event listener for the smoothie form submission.
+    /* Event listener for the smoothie form submission.
      * Prevents default form submission, retrieves input values,
      * creates a Smoothie instance, and displays the details or error message.
      */
