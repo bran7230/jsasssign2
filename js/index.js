@@ -66,10 +66,7 @@ class Smoothie {
 
 }
 
-function getCheckedValues(groupName) {
-    return Array.from(document.querySelectorAll(`input[name="${groupName}[]"]:checked`))
-        .map(cb => cb.value);
-}
+
 
 
 /* Event listener for the smoothie form submission.
