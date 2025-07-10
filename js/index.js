@@ -66,6 +66,12 @@ class Smoothie {
 
 }
 
+function getCheckedValues(groupName) {
+    return Array.from(document.querySelectorAll(`input[name="${groupName}[]"]:checked`))
+        .map(cb => cb.value);
+}
+
+
 /* Event listener for the smoothie form submission.
  * Prevents default form submission, retrieves input values,
  * creates a Smoothie instance, and displays the details or error message.
