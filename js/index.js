@@ -6,6 +6,32 @@
 let smoothieForm = document.getElementById("smoothieForm");
 let output = document.getElementById("output");
 let specialInstructions = document.getElementById("specialInstructions");
+const fruitPrice = {
+    applePrice : 0.75,
+    bananaPrice : 0.56,
+    orangePrice : 0.86,
+    strawberryPrice : 0.36
+}; 
+
+const liquidPrice = {
+    waterPrice : "Free", 
+    milkPrice : 0.25,
+    juicePrice: 0.50,
+    yogurtPrice: 0.80
+};
+
+const sweetenerPrice = {
+    honeyPrice: 0.40,
+    sugarPrice: 0.10,
+    agavePrice: 0.20,
+};
+
+const sizePrice = {
+    smallPrice : 1.00,
+    mediumPrice : 1.50,
+    largePrice : 2.00
+};
+
 
 /*
  * Smoothie Class
