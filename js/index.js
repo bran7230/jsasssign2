@@ -6,6 +6,7 @@
 let smoothieForm = document.getElementById("smoothieForm");
 let output = document.getElementById("output");
 let specialInstructions = document.getElementById("specialInstructions");
+
 /*
  * Smoothie Class
  * Represents a smoothie with a quantity and fruit type with size, liquid, and sweetner.
@@ -18,17 +19,35 @@ class Smoothie {
     size;
     liquid;
     sweetener;
+    notes;
 
-    constructor(quantity, fruit, size, liquid, sweetener) {
-        if (quantity < 1 || quantity > 10) {
-            throw new Error("Quantity must be between 1 and 10");
+    constructor(quantity, fruit, size, liquid, sweetener, notes) {
+        if (quantity < 1 || quantity > 10 || isNaN(quantity)) {
+            throw new Error("Quantity must be a number between 1 and 10");
         }
-
+        // Check if fruit, size, liquid, and sweetener are provided and not empty(Ps: I know I dont need these validations but I added them for extra safety if you wanted to use this code in a real world application)
+        if (!fruit || fruit.trim() === "") {
+            throw new Error("Please select a fruit.");
+        }
+        if (!size || size.trim() === "") {
+            throw new Error("Please select a size.");
+        }
+        if (!liquid || liquid.trim() === "") {
+            throw new Error("Please select a liquid base.");
+        }
+        if (!sweetener || sweetener.trim() === "") {
+            sweetener = "None"; // Default to "None" if no sweetener is selected
+        }
+        if (notes && notes.length > 50) { // Check if notes exceed 50 characters and if there is any notes
+            output.textContent = "Special instructions are too long (max 50 characters).";
+            throw new Error("Special instructions are too long (max 50 characters)");
+        }
         this.quantity = quantity;
         this.fruit = fruit;
         this.size = size;
         this.liquid = liquid;
         this.sweetener = sweetener;
+        this.notes = notes || ""; // Default to empty string if no notes are provided
     }
 
     getSmoothieDetails() {
@@ -44,24 +63,33 @@ class Smoothie {
  * Prevents default form submission, retrieves input values,
  * creates a Smoothie instance, and displays the details or error message.
  */
-smoothieForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    let quantity = parseInt(document.getElementById("quantity").value);
-    let fruit = document.getElementById("fruit").value;
-    let size = document.getElementById("size").value;
-    let liquid = document.getElementById("liquid").value;
-    let sweetener = document.getElementById("sweetener").value;
-    let notes = document.getElementById("notes").value;
-
-    try {
-        let smoothie = new Smoothie(quantity, fruit, size, liquid, sweetener);
-        output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
-        specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
-    }
-    catch (error) {
-        output.textContent = error.message;
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    const smoothieForm = document.getElementById("smoothieForm");
+    const output = document.getElementById("output");
+    const specialInstructions = document.getElementById("specialInstructions");
+    const quantityInput = document.getElementById("quantity");
+    const fruitSelect = document.getElementById("fruit");
+    const sizeSelect = document.getElementById("size");
+    const liquidSelect = document.getElementById("liquid");
+    const sweetenerSelect = document.getElementById("sweetener");
+    const notesInput = document.getElementById("notes");
+    smoothieForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const quantity = parseInt(quantityInput.value, 10);
+        const fruit = fruitSelect.value;
+        const size = sizeSelect.value;
+        const liquid = liquidSelect.value;
+        const sweetener = sweetenerSelect.value;
+        const notes = notesInput.value;
+        try {
+            let smoothie = new Smoothie(quantity, fruit, size, liquid, sweetener, notes);
+            output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
+            specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
+        }
+        catch (error) {
+            output.textContent = error.message;
+        }
+    });
 });
 
 
@@ -72,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * It updates the form fields with the specified values when you call it.
     */
     function setFormValue(quantity, fruit, size, liquid, sweetener, notes) {
-        new Smoothie(quantity, fruit, size, liquid, sweetener); //Checking data validity(Beauty of OOP)
+        new Smoothie(quantity, fruit, size, liquid, sweetener, notes); //Checking data validity(Beauty of OOP)
         // Set the form values based on the parameters passed to the function
         document.getElementById("quantity").value = quantity;
         document.getElementById("fruit").value = fruit;
