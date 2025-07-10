@@ -6,7 +6,7 @@
 
 html {
   height: 100%;
-  background-color: #f0f0f0;
+  background-color: #fae0f4a8;
   font-size: 0.9em;
 }
 
@@ -26,8 +26,8 @@ header {
 }
 
 .preSets img {
-  height: 10em;
-  width: 10em;
+  height: 6em;
+  width: 6em;
   margin: 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -57,8 +57,22 @@ header {
   font-family: Arial, sans-serif;
 }
 
+.container{
+  margin: 0 auto;
+  padding: 2em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  max-width: 40em;
+}
+
 .smoothieForm label {
   display: block;
+  padding-bottom: 1.5em;
 }
 
 .smoothieForm select,
@@ -76,7 +90,7 @@ header {
 }
 
 .smoothieForm button {
-  background-color: #28a745;
+  background-color: #db9512;
   color: white;
   padding: 1em;
   border: none;
@@ -89,6 +103,6 @@ header {
   font-family: Arial, sans-serif;
 }
 .smoothieForm button:hover {
-  background-color: #218838;
+  background-color: #f5bb51;
   transition: background-color 0.3s ease;
 }

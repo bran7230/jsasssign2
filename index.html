@@ -7,10 +7,8 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="js/index.js" defer></script>
   </head>
-  <header>
-    <h1>Use this form to order your favorite smoothie!</h1>
-  </header>
   <body>
+    <div class="container">
     <div class="preSets">
       <h2>Order some of our favourites!</h2>
       <!---I used chatgpt to generate images for this assignment. Hope thats ok!-->
@@ -53,6 +51,7 @@
         min="1"
         max="10"
         value="1"
+        step="1"
       />
 
       <label for="size">Size:</label>
@@ -94,5 +93,6 @@
     </form>
     <p id="output" class="recept"></p>
     <p id="specialInstructions" class="specialInstructions"></p>
+    </div>
   </body>
 </html>

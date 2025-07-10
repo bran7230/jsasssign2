@@ -57,11 +57,11 @@ class Smoothie {
         /* Ternary operator to determine the serving text based on quantity
          * If quantity is 1, it will return "serving of", otherwise it will return "servings of"
          * This is used to make the output more readable and grammatically correct.
-         */ 
+         */
         const servingText = this.quantity === 1 ? "serving of" : "servings of";
         // Only include sweetener if it's not empty or "None"
         const sweetenerText = this.sweetener && this.sweetener.toLowerCase() !== "none" ? ` and ${this.sweetener} sweetener` : "";
-        return ` A ${this.size} ${this.liquid} smoothie with ${this.quantity} ${servingText} ${this.fruit} ${sweetenerText}.`;
+        return ` A ${this.size} ${this.liquid} Smoothie with ${this.quantity} ${servingText} ${this.fruit} ${sweetenerText}.`;
     }
 
 }
