@@ -64,6 +64,8 @@ class Smoothie {
  * creates a Smoothie instance, and displays the details or error message.
  */
 document.addEventListener("DOMContentLoaded", function () {
+    // Get the form and output elements by their IDs
+    // This is done to ensure the DOM is fully loaded before accessing the elements.
     const smoothieForm = document.getElementById("smoothieForm");
     const output = document.getElementById("output");
     const specialInstructions = document.getElementById("specialInstructions");
@@ -73,14 +75,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const liquidSelect = document.getElementById("liquid");
     const sweetenerSelect = document.getElementById("sweetener");
     const notesInput = document.getElementById("notes");
+
+    /* * Event listener for the smoothie form submission.
+     * Prevents default form submission, retrieves input values,
+     * creates a Smoothie instance, and displays the details or error message.
+     */
     smoothieForm.addEventListener("submit", function (event) {
         event.preventDefault();
+        // Clear previous output and special instructions
+        output.textContent = "";
+        specialInstructions.textContent = "";
+
+        /* Retrieve input values from the form.
+         * This includes the quantity, fruit, size, liquid, sweetener, and notes.
+         * The quantity is parsed as an integer to ensure it's a number.
+        */
         const quantity = parseInt(quantityInput.value, 10);
         const fruit = fruitSelect.value;
         const size = sizeSelect.value;
         const liquid = liquidSelect.value;
         const sweetener = sweetenerSelect.value;
         const notes = notesInput.value;
+
+        /* Create a new Smoothie instance with the input values.
+         * If the input values are valid, it will return the smoothie details.
+         * If there are any validation errors, it will throw an error and display the error message.
+        */
         try {
             let smoothie = new Smoothie(quantity, fruit, size, liquid, sweetener, notes);
             output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
