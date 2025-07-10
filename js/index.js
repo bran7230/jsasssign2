@@ -9,8 +9,10 @@ let specialInstructions = document.getElementById("specialInstructions");
 
 /*
  * Smoothie Class
- * Represents a smoothie with a quantity and fruit type with size, liquid, and sweetner.
+ * Represents a smoothie with a quantity and fruit type with size, liquid, sweetner and notes.
  * Validates the quantity to be between 1 and 10.
+ * Validates that fruit, size, liquid, and sweetener are provided.
+ * Validates that notes do not exceed 50 characters.
  */
 class Smoothie {
 
