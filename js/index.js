@@ -66,7 +66,7 @@ smoothieForm.addEventListener("submit", function (event) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("presetSmoothie").addEventListener("click", function () {
+    document.getElementById("presetSmoothie1").addEventListener("click", function () {
         document.getElementById("fruit").value = "Strawberry";
         document.getElementById("quantity").value = 2;
         document.getElementById("size").value = "Large";
@@ -74,4 +74,32 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("sweetener").value = "Honey";
         document.getElementById("notes").value = "No ice, please!";
     });
+
+    document.getElementById("presetSmoothie2").addEventListener("click", function () {
+        document.getElementById("fruit").value = "Banana";
+        document.getElementById("quantity").value = 1;
+        document.getElementById("size").value = "Medium";
+        document.getElementById("liquid").value = "Milk";
+        document.getElementById("sweetener").value = "None";
+        document.getElementById("notes").value = "Add extra protein powder.";
+    });
+
+    document.getElementById("presetSmoothie3").addEventListener("click", function () {
+        document.getElementById("fruit").value = "Apple";
+        document.getElementById("quantity").value = 3;
+        document.getElementById("size").value = "Small";
+        document.getElementById("liquid").value = "Juice";
+        document.getElementById("sweetener").value = "Agave";
+        document.getElementById("notes").value = "Make it extra cold!";
+    });
+
+    document.getElementById("presetSmoothie4").addEventListener("click", function () {
+        document.getElementById("fruit").value = "Orange";
+        document.getElementById("quantity").value = 6;
+        document.getElementById("size").value = "Large";
+        document.getElementById("liquid").value = "Water";
+        document.getElementById("sweetener").value = "None";
+        document.getElementById("notes").value = "No sweetener, please.";
+    });
+
 });
