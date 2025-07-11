@@ -279,14 +279,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    /* Function to set form values for preset smoothies.
-     * This function sets the values of the smoothie form fields based on the provided parameters.
-     * IE You pass in 2 for the quantity, "Strawberry" for the fruit, etc.
-     * It updates the form fields with the specified values when you call it.
-    */
-    function setFormValue(quantity, fruit, size, liquid, sweetener, notes) {
+/* Function to set form values for preset smoothies.
+ * This function sets the values of the smoothie form fields based on the provided parameters.
+ * IE You pass in 2 for the quantity, "Strawberry" for the fruit, etc.
+ * It updates the form fields with the specified values when you call it.
+*/
+ function setFormValue(quantity, fruit, size, liquid, sweetener, notes) {
         new Smoothie(quantity, fruit, size, liquid, sweetener, notes); //Checking data validity(Beauty of OOP)
         // Set the form values based on the parameters passed to the function
         document.getElementById("quantity").value = quantity;
@@ -296,6 +294,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("sweetener").value = sweetener;
         document.getElementById("notes").value = notes;
     }
+
+document.addEventListener("DOMContentLoaded", function () {
 
     //Add event listeners to preset buttons to set form values for different smoothies.
     //It goes Quanity, Fruit, Size, Liquid, Sweetener, Notes and all of this is passed to the setFormValue function which updates the dom.
