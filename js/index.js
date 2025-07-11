@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("liquid").value = liquid;
         document.getElementById("sweetener").value = sweetener;
         document.getElementById("notes").value = notes;
-    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
 
