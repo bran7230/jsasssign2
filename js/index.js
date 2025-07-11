@@ -178,12 +178,6 @@ class Smoothie {
 }
 
 
-
-
-/* Event listener for the smoothie form submission.
- * Prevents default form submission, retrieves input values,
- * creates a Smoothie instance, and displays the details or error message.
- */
 document.addEventListener("DOMContentLoaded", function () {
     // Get the form and output elements by their IDs
     // This is done to ensure the DOM is fully loaded before accessing the elements.
