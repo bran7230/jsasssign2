@@ -219,7 +219,10 @@ class Smoothie {
      * It uses the getSpecificPrice method to retrieve the prices for each component.
      */
     getSummary() {
-        return `Size = ${this.size}: ${this.getSpecificPrice("size", this.size)} Fruit = ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)} Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)} Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)}`;
+        return `Size = ${this.size}: ${this.getSpecificPrice("size", this.size)} 
+                Fruit = ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)} 
+                Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)} 
+                Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)}`;
     }
 
 }
