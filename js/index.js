@@ -158,7 +158,8 @@ class Smoothie {
         }
 
         // Calculate the total price
-        const totalPrice = (fruitPrice + liquidPrice + sweetenerPrice + sizePrice) * this.quantity;
+        const tax = ((fruitPrice + liquidPrice + sweetenerPrice + sizePrice) * this.quantity) * 0.13; // 13% tax on the total price
+        const totalPrice = ((fruitPrice + liquidPrice + sweetenerPrice + sizePrice) * this.quantity) + tax; // Adding 13% tax to the total price
         // Return the total price formatted to two decimal places
         return `$${totalPrice.toFixed(2)}`;
     }
