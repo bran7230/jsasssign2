@@ -30,6 +30,15 @@ header {
   align-items: center;
 }
 
+.specialInstructions {
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 20px;
+  margin-bottom:20px;
+  text-align: center;
+  align-items: center;
+}
+
 .preSets img {
   height: 6em;
   width: 6em;
@@ -86,7 +95,7 @@ header {
 .smoothieForm textarea {
   width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 2em;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -110,4 +119,12 @@ header {
 .smoothieForm button:hover {
   background-color: #be8314;
   transition: background-color 0.3s ease;
+}
+.summary{
+  margin: 0 auto;
+  padding: 2em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

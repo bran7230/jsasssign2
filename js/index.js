@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
             output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
             specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
             // Display the summary of the smoothie order
-            summary.textContent = `Summary: ${smoothie.getSummary()}`;
+            summary.textContent = `Prices: ${smoothie.getSummary()}`;
         }
         catch (error) {
             output.textContent = error.message;
