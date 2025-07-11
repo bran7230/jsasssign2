@@ -90,7 +90,7 @@ header {
 }
 
 .smoothieForm button {
-  background-color: #db9512;
+  background-color: #e49d19;
   color: white;
   padding: 1em;
   border: none;
@@ -103,6 +103,6 @@ header {
   font-family: Arial, sans-serif;
 }
 .smoothieForm button:hover {
-  background-color: #f5bb51;
+  background-color: #be8314;
   transition: background-color 0.3s ease;
 }
