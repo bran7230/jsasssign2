@@ -6,30 +6,30 @@
 let smoothieForm = document.getElementById("smoothieForm");
 let output = document.getElementById("output");
 let specialInstructions = document.getElementById("specialInstructions");
-const fruitPrice = {
-    applePrice : 0.75,
-    bananaPrice : 0.56,
-    orangePrice : 0.86,
-    strawberryPrice : 0.36
-}; 
-
-const liquidPrice = {
-    waterPrice : "Free", 
-    milkPrice : 0.25,
-    juicePrice: 0.50,
-    yogurtPrice: 0.80
-};
-
-const sweetenerPrice = {
-    honeyPrice: 0.40,
-    sugarPrice: 0.10,
-    agavePrice: 0.20,
-};
-
-const sizePrice = {
-    smallPrice : 1.00,
-    mediumPrice : 1.50,
-    largePrice : 2.00
+const smoothiePrices =
+{
+    fruitprice: {
+        applePrice: 0.75,
+        bananaPrice: 0.56,
+        orangePrice: 0.86,
+        strawberryPrice: 0.36
+    },
+    liquidPrice: {
+        waterPrice: 0.00,
+        milkPrice: 0.25,
+        juicePrice: 0.50,
+        yogurtPrice: 0.80
+    },
+    sweetenerPrice: {
+        honeyPrice: 0.40,
+        sugarPrice: 0.10,
+        agavePrice: 0.20,
+    },
+    sizePrice: {
+        smallPrice: 1.00,
+        mediumPrice: 1.50,
+        largePrice: 2.00
+    }
 };
 
 
@@ -79,6 +79,90 @@ class Smoothie {
         this.notes = notes || ""; // Default to empty string if no notes are provided
     }
 
+    /* Method to calculate the total price of the smoothie based on its components.
+     * It uses the smoothiePrices object to get the prices for each component.
+     * The total price is calculated by summing the prices of the fruit, liquid, sweetener, and size,
+     * multiplied by the quantity.
+     */
+
+    calculatePrice() {
+        // Get the price of the selected fruit
+        let fruitPrice = 0;
+        switch (this.fruit.toLowerCase()) {
+            case "apple":
+                fruitPrice = smoothiePrices.fruitprice.applePrice;
+                break;
+            case "banana":
+                fruitPrice = smoothiePrices.fruitprice.bananaPrice;
+                break;
+            case "orange":
+                fruitPrice = smoothiePrices.fruitprice.orangePrice;
+                break;
+            case "strawberry":
+                fruitPrice = smoothiePrices.fruitprice.strawberryPrice;
+                break;
+            default:
+                throw new Error("Invalid fruit selected.");
+        }
+        // Get the price of the selected liquid base
+        let liquidPrice = 0;
+        switch (this.liquid.toLowerCase()) {
+            case "water":
+                liquidPrice = smoothiePrices.liquidPrice.waterPrice;
+                break;
+            case "milk":
+                liquidPrice = smoothiePrices.liquidPrice.milkPrice;
+                break;
+            case "juice":
+                liquidPrice = smoothiePrices.liquidPrice.juicePrice;
+                break;
+            case "yogurt":
+                liquidPrice = smoothiePrices.liquidPrice.yogurtPrice;
+                break;
+            default:
+                throw new Error("Invalid liquid base selected.");
+        }
+
+        // Get the price of the selected sweetener
+        let sweetenerPrice = 0;
+        switch (this.sweetener.toLowerCase()) {
+            case "honey":
+                sweetenerPrice = smoothiePrices.sweetenerPrice.honeyPrice;
+                break;
+            case "sugar":
+                sweetenerPrice = smoothiePrices.sweetenerPrice.sugarPrice;
+                break;
+            case "agave":
+                sweetenerPrice = smoothiePrices.sweetenerPrice.agavePrice;
+                break;
+            case "none":
+                sweetenerPrice = 0; // No cost for no sweetener
+                break;
+            default:
+                throw new Error("Invalid sweetener selected.");
+        }
+        // Get the price of the selected size
+        let sizePrice = 0;
+        switch (this.size.toLowerCase()) {
+            case "small":
+                sizePrice = smoothiePrices.sizePrice.smallPrice;
+                break;
+            case "medium":
+                sizePrice = smoothiePrices.sizePrice.mediumPrice;
+                break;
+            case "large":
+                sizePrice = smoothiePrices.sizePrice.largePrice;
+                break;
+            default:
+                throw new Error("Invalid size selected.");
+        }
+
+        // Calculate the total price
+        const totalPrice = (fruitPrice + liquidPrice + sweetenerPrice + sizePrice) * this.quantity;
+        // Return the total price formatted to two decimal places
+        return `$${totalPrice.toFixed(2)}`;
+    }
+
     getSmoothieDetails() {
         /* Ternary operator to determine the serving text based on quantity
          * If quantity is 1, it will return "serving of", otherwise it will return "servings of"
@@ -87,7 +171,7 @@ class Smoothie {
         const servingText = this.quantity === 1 ? "serving of" : "servings of";
         // Only include sweetener if it's not empty or "None"
         const sweetenerText = this.sweetener && this.sweetener.toLowerCase() !== "none" ? ` and ${this.sweetener} sweetener` : "";
-        return ` A ${this.size} ${this.liquid} Smoothie with ${this.quantity} ${servingText} ${this.fruit} ${sweetenerText}.`;
+        return ` A ${this.size} ${this.liquid} Smoothie with ${this.quantity} ${servingText} ${this.fruit} ${sweetenerText}. The total price is: ${this.calculatePrice()}.`;
     }
 
 }
