@@ -18,18 +18,18 @@ const smoothiePrices =
     liquidPrice: {
         waterPrice: 0.00,
         milkPrice: 0.25,
-        juicePrice: 0.50,
-        yogurtPrice: 0.80
+        juicePrice: 0.55,
+        yogurtPrice: 0.85
     },
     sweetenerPrice: {
-        honeyPrice: 1.00,
-        sugarPrice: 0.10,
-        agavePrice: 0.20,
+        honeyPrice: 1.25,
+        sugarPrice: 0.15,
+        agavePrice: 0.25,
     },
     sizePrice: {
-        smallPrice: 1.00,
+        smallPrice: 1.10,
         mediumPrice: 1.50,
-        largePrice: 2.00
+        largePrice: 2.20
     }
 };
 
