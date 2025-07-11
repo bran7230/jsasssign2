@@ -21,7 +21,7 @@ const smoothiePrices =
         yogurtPrice: 0.80
     },
     sweetenerPrice: {
-        honeyPrice: 0.40,
+        honeyPrice: 1.00,
         sugarPrice: 0.10,
         agavePrice: 0.20,
     },
