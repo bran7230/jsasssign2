@@ -213,6 +213,14 @@ class Smoothie {
         const sweetenerText = this.sweetener && this.sweetener.toLowerCase() !== "none" ? ` and ${this.sweetener} sweetener` : "";
         return ` A ${this.size} ${this.liquid} Smoothie with ${this.quantity} ${servingText} ${this.fruit} ${sweetenerText}. The total price is: ${this.calculatePrice()}.`;
     }
+    /* Method to get a summary of the smoothie order.
+     * This method returns a string summarizing the smoothie order, including the size, fruit,
+     * liquid base, sweetener, and their respective prices.
+     * It uses the getSpecificPrice method to retrieve the prices for each component.
+     */
+    getSummary() {
+        return `Size = ${this.size}: ${this.getSpecificPrice("size", this.size)} Fruit = ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)} Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)} Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)}`;
+    }
 
 }
 
@@ -260,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
             output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
             specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
             // Display the summary of the smoothie order
-            summary.textContent = `Size = ${smoothie.size}: ${smoothie.getSpecificPrice("size", smoothie.size)} Fruit = ${smoothie.fruit}: ${smoothie.getSpecificPrice("fruit", smoothie.fruit)} Liquid Base = ${smoothie.liquid}: ${smoothie.getSpecificPrice("liquid", smoothie.liquid)} Sweetener = ${smoothie.sweetener}: ${smoothie.getSpecificPrice("sweetener", smoothie.sweetener)}`;
+            summary.textContent = `Summary: ${smoothie.getSummary()}`;
         }
         catch (error) {
             output.textContent = error.message;
