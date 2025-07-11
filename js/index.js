@@ -6,6 +6,7 @@
 let smoothieForm = document.getElementById("smoothieForm");
 let output = document.getElementById("output");
 let specialInstructions = document.getElementById("specialInstructions");
+let summary = document.getElementById("summary");
 const smoothiePrices =
 {
     fruitprice: {
@@ -164,6 +165,23 @@ class Smoothie {
         return `$${totalPrice.toFixed(2)}`;
     }
 
+    getSizePrice(size) {
+        return `$${smoothiePrices.sizePrice[`${size.toLowerCase()}Price`] || 0}`; // Return the price for the specified size, or 0 if not found
+    }
+
+    getFruitPrice(fruit){
+        return `$${smoothiePrices.fruitprice[`${fruit.toLowerCase()}Price`] || 0}`; // Return the price for the specified fruit, or 0 if not found
+    }
+
+    getLiquidPrice(liquid) {
+        return `$${smoothiePrices.liquidPrice[`${liquid.toLowerCase()}Price`] || 0}`; // Return the price for the specified liquid, or 0 if not found
+    }
+
+    getSweetenerPrice(sweetener) {
+        return `$${smoothiePrices.sweetenerPrice[`${sweetener.toLowerCase()}Price`] || 0}`; // Return the price for the specified sweetener, or 0 if not found
+    }
+
+
     getSmoothieDetails() {
         /* Ternary operator to determine the serving text based on quantity
          * If quantity is 1, it will return "serving of", otherwise it will return "servings of"
@@ -220,6 +238,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let smoothie = new Smoothie(quantity, fruit, size, liquid, sweetener, notes);
             output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
             specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
+            // Display the summary of the smoothie order
+            summary.textContent = `Size = ${smoothie.size}: ${smoothie.getSizePrice(smoothie.size)} Fruit = ${smoothie.fruit}: ${smoothie.getFruitPrice(smoothie.fruit)} Liquid Base = ${smoothie.liquid}: ${smoothie.getLiquidPrice(smoothie.liquid)} Sweetener = ${smoothie.sweetener}: ${smoothie.getSweetenerPrice(sweetener)}`;
         }
         catch (error) {
             output.textContent = error.message;
