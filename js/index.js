@@ -169,7 +169,7 @@ class Smoothie {
         return `$${smoothiePrices.sizePrice[`${size.toLowerCase()}Price`] || 0}`; // Return the price for the specified size, or 0 if not found
     }
 
-    getFruitPrice(fruit){
+    getFruitPrice(fruit) {
         return `$${smoothiePrices.fruitprice[`${fruit.toLowerCase()}Price`] || 0}`; // Return the price for the specified fruit, or 0 if not found
     }
 
@@ -181,7 +181,28 @@ class Smoothie {
         return `$${smoothiePrices.sweetenerPrice[`${sweetener.toLowerCase()}Price`] || 0}`; // Return the price for the specified sweetener, or 0 if not found
     }
 
-
+    /* Method to get a price, and return value based on the type and value provided.
+     * This method allows you to retrieve the price of a specific component (fruit, liquid, sweetener, or size)
+     * by passing the type and value as parameters.
+     * and referencing those values in the smoothiePrices object using indexing(or key value pairs)
+     * It throws an error if the type is invalid.
+     * This is useful for getting the price of a specific component without having to call multiple methods and cleaner to debug.
+     * Example usage: smoothie.getSpecificPrice("fruit", "apple") will return the price of an apple.
+    */
+    getSpecificPrice(type, value) {
+        switch (type.toLowerCase()) {
+            case "fruit":
+                return this.getFruitPrice(value);
+            case "liquid":
+                return this.getLiquidPrice(value);
+            case "sweetener":
+                return this.getSweetenerPrice(value);
+            case "size":
+                return this.getSizePrice(value);
+            default:
+                throw new Error("Invalid type specified for price retrieval.");
+        }
+    }
     getSmoothieDetails() {
         /* Ternary operator to determine the serving text based on quantity
          * If quantity is 1, it will return "serving of", otherwise it will return "servings of"
@@ -239,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
             output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
             specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
             // Display the summary of the smoothie order
-            summary.textContent = `Size = ${smoothie.size}: ${smoothie.getSizePrice(smoothie.size)} Fruit = ${smoothie.fruit}: ${smoothie.getFruitPrice(smoothie.fruit)} Liquid Base = ${smoothie.liquid}: ${smoothie.getLiquidPrice(smoothie.liquid)} Sweetener = ${smoothie.sweetener}: ${smoothie.getSweetenerPrice(sweetener)}`;
+            summary.textContent = `Size = ${smoothie.size}: ${smoothie.getSpecificPrice("size", smoothie.size)} Fruit = ${smoothie.fruit}: ${smoothie.getSpecificPrice("fruit", smoothie.fruit)} Liquid Base = ${smoothie.liquid}: ${smoothie.getSpecificPrice("liquid", smoothie.liquid)} Sweetener = ${smoothie.sweetener}: ${smoothie.getSpecificPrice("sweetener", smoothie.sweetener)}`;
         }
         catch (error) {
             output.textContent = error.message;
