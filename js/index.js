@@ -164,7 +164,10 @@ class Smoothie {
         // Return the total price formatted to two decimal places
         return `$${totalPrice.toFixed(2)}`;
     }
-
+    // All of the following methods are used to get the price of a specific component (fruit, liquid, sweetener, or size) based on the smoothiePrices object. 
+    // SO if you want to test it with for example a Smoothie object named smoothie, you can either call smoothie.getFruitPrice("apple") 
+    // or smoothie.getSpecificPrice("fruit", "apple") and it will return the price of an apple.
+    // or smoothie.getFruitPrice(smoothie.fruit) will return the price of the fruit in the smoothie object.
     getSizePrice(size) {
         return `$${smoothiePrices.sizePrice[`${size.toLowerCase()}Price`] || 0}`; // Return the price for the specified size, or 0 if not found
     }
