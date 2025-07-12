@@ -219,10 +219,10 @@ class Smoothie {
      * It uses the getSpecificPrice method to retrieve the prices for each component.
      */
     getSummary() {
-        return `Size = ${this.size}: ${this.getSpecificPrice("size", this.size)} 
-                Fruit = ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)} 
-                Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)} 
-                Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)}`;
+        return `Size = ${this.size}: ${this.getSpecificPrice("size", this.size)}<br>
+Fruit = ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)}<br>
+Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)}<br>
+Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)}`;
     }
 
 }
@@ -271,7 +271,8 @@ document.addEventListener("DOMContentLoaded", function () {
             output.textContent = smoothie.getSmoothieDetails() + " Thank you for your order!";
             specialInstructions.textContent = notes ? `Special Instructions: ${notes}` : "No special instructions provided.";
             // Display the summary of the smoothie order
-            summary.textContent = `Prices: ${smoothie.getSummary()}`;
+            summary.innerHTML = smoothie.getSummary();
+            summary.className = "summary"; // Add a class to the summary for styling
         }
         catch (error) {
             output.textContent = error.message;
@@ -284,15 +285,15 @@ document.addEventListener("DOMContentLoaded", function () {
  * IE You pass in 2 for the quantity, "Strawberry" for the fruit, etc.
  * It updates the form fields with the specified values when you call it.
 */
- function setFormValue(quantity, fruit, size, liquid, sweetener, notes) {
-        new Smoothie(quantity, fruit, size, liquid, sweetener, notes); //Checking data validity(Beauty of OOP)
-        // Set the form values based on the parameters passed to the function
-        document.getElementById("quantity").value = quantity;
-        document.getElementById("fruit").value = fruit;
-        document.getElementById("size").value = size;
-        document.getElementById("liquid").value = liquid;
-        document.getElementById("sweetener").value = sweetener;
-        document.getElementById("notes").value = notes;
+function setFormValue(quantity, fruit, size, liquid, sweetener, notes) {
+    new Smoothie(quantity, fruit, size, liquid, sweetener, notes); //Checking data validity(Beauty of OOP)
+    // Set the form values based on the parameters passed to the function
+    document.getElementById("quantity").value = quantity;
+    document.getElementById("fruit").value = fruit;
+    document.getElementById("size").value = size;
+    document.getElementById("liquid").value = liquid;
+    document.getElementById("sweetener").value = sweetener;
+    document.getElementById("notes").value = notes;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
