@@ -220,9 +220,9 @@ class Smoothie {
      */
     getSummary() {
         return `Size = ${this.size}: ${this.getSpecificPrice("size", this.size)}<br>
-Fruit = ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)}<br>
-Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)}<br>
-Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)}`;
+                Fruit = ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)}<br>
+                Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)}<br>
+                Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)}`;
     }
 
 }
