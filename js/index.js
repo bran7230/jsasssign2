@@ -226,6 +226,17 @@ class Smoothie {
                 Total Price = ${this.calculatePrice()}<br>
                 Order Number: ${Math.floor(Math.random() * 10000) + 1}`;
     }
+    /* Method to get an unformatted summary of the smoothie order.
+     * This method returns a string summarizing the smoothie order in a plain text format,
+     * including the size, fruit, liquid base, sweetener, and their respective prices.
+     * It uses the getSpecificPrice method to retrieve the prices for each component.
+     * This is useful for logging or debugging purposes where HTML formatting is not needed.
+     * It returns a string with the smoothie details in a readable format.(Useful for object logging, Im not using it)
+     */
+    //Again, this is not used in the code but I added it for completeness and to show how you can get the smoothie details in a plain text format when you want to log it or use it in a different context IE Console logging or debugging.
+    getUnformattedSummary() {
+         return `Size = ${this.size}: ${this.getSpecificPrice("size", this.size)} Fruit = ${this.quantity} ${this.fruit}: ${this.getSpecificPrice("fruit", this.fruit)} Liquid Base = ${this.liquid}: ${this.getSpecificPrice("liquid", this.liquid)} Sweetener = ${this.sweetener}: ${this.getSpecificPrice("sweetener", this.sweetener)} Total Price = ${this.calculatePrice()} Order Number: ${Math.floor(Math.random() * 10000) + 1}`;
+    }
 
 }
 
